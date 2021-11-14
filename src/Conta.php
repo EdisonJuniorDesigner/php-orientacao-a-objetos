@@ -6,6 +6,9 @@ class Conta
     private string $nomeTitular;
     private float $saldo;
 
+    // atributo estático da classe
+    private static int $numeroDeContas = 0;
+
     // inicializando os atributos
     public function __construct(string $cpfTitular, string $nomeTitular)
     {
@@ -13,6 +16,14 @@ class Conta
         $this->validaNomeTitular($nomeTitular);
         $this->nomeTitular = $nomeTitular;
         $this->saldo = 0;
+
+        self::$numeroDeContas++;
+    }
+
+    //quando apago uma conta ele diminui a contagem de contas
+    public function __destruct()
+    {
+        self::$numeroDeContas--;
     }
 
     public function saca(float $valorASacar):void
@@ -67,5 +78,11 @@ class Conta
             echo "Nome precisa ter pelo menos 5 caracteres";
             exit();
         }
+    }
+
+    // método estático
+    public static function recuperaNumeroDeContas():int
+    {
+        return self::$numeroDeContas;
     }
 }

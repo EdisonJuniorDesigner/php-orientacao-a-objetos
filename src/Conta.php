@@ -4,7 +4,15 @@ class Conta
 {
     private string $cpfTitular;
     private string $nomeTitular;
-    private float $saldo = 0;
+    private float $saldo;
+
+    // inicializando os atributos
+    public function __construct(string $cpfTitular, string $nomeTitular)
+    {
+        $this->cpfTitular = $cpfTitular;
+        $this->nomeTitular = $nomeTitular;
+        $this->saldo = 0;
+    }
 
     public function saca(float $valorASacar):void
     {
@@ -37,9 +45,9 @@ class Conta
         $contaDestino->deposita($valorATransferir);
     }
 
-    public function defineCpfTitular(string $cpf):void
+    public function recuperaSaldo():float
     {
-        $this->cpfTitular = $cpf;
+        return $this->saldo;
     }
 
     public function recuperaCpfTitular(): string
@@ -47,18 +55,8 @@ class Conta
         return $this->cpfTitular;
     }
 
-    public function defineNomeTitular(string $nome):void
-    {
-        $this->nomeTitular = $nome;
-    }
-
     public function recuperaNomeTitular():string
     {
         return $this->nomeTitular;
-    }
-
-    public function recuperaSaldo():float
-    {
-        return $this->saldo;
     }
 }

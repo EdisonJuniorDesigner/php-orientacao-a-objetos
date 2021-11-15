@@ -1,9 +1,9 @@
 <?php
 
-require_once 'src/Conta.php';
-require_once 'src/Endereco.php';
-require_once 'src/Titular.php';
-require_once 'src/CPF.php';
+require_once 'autoload.php';
+
+use Alura\Banco\Modelo\Conta\{Titular, Conta};
+use Alura\Banco\Modelo\{Endereco, CPF};
 
 $endereco = new Endereco('Belford Roxo', 'um bairro', 'minha rua', '900');
 $edison = new Titular(new CPF('123.456.789-10'), 'Edison Junior', $endereco);

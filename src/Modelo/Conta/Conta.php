@@ -5,7 +5,7 @@ namespace Alura\Banco\Modelo\Conta;
 class Conta
 {
     private Titular $titular;
-    private float $saldo;
+    protected float $saldo;
 
     // atributo estático da classe
     private static int $numeroDeContas = 0;
@@ -15,6 +15,7 @@ class Conta
     {
         $this->titular = $titular;
         $this->saldo = 0;
+
         self::$numeroDeContas++;
     }
 
@@ -26,12 +27,14 @@ class Conta
 
     public function saca(float $valorASacar):void
     {
-        if($valorASacar > $this->saldo){
+        $tarifaSaque = $valorASacar * 0.05;
+        $valorSaque = $valorASacar + $tarifaSaque;
+        if($valorSaque > $this->saldo){
             echo "Saldo indisponível".PHP_EOL;
             return;
         }
 
-        $this->saldo -= $valorASacar;
+        $this->saldo -= $valorSaque;
     }
 
     public function deposita(float $valorADepositar):void

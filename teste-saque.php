@@ -1,11 +1,11 @@
 <?php
 
-use Alura\Banco\Modelo\Conta\{Titular, Conta, ContaPoupanca};
+use Alura\Banco\Modelo\Conta\{Titular, ContaPoupanca, ContaCorrente};
 use Alura\Banco\Modelo\{CPF, Endereco};
 
 require_once 'autoload.php';
 
-$conta = new Conta(
+$conta = new ContaCorrente(
     new Titular(
         new CPF('123.465.789-10'),
         'Edison Junior',

@@ -4,6 +4,8 @@ namespace Alura\Banco\Modelo;
 
 class Pessoa
 {
+    use AcessoPropriedades;
+
     protected string $nome;
     private CPF $cpf;
 
